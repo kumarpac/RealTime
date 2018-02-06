@@ -1,0 +1,10 @@
+records.foreachRDD(new VoidFunction2<JavaRDD<String>, Time>() {
+private static final long serialVersionUID = 1L;
+
+@Override
+public void call(JavaRDD<String> rdd, Time time) throws Exception {
+if (rdd.count() > 0) {
+rdd.saveAsTextFile(outputPath + "/" + time.milliseconds());
+}
+}
+});
