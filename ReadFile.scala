@@ -19,7 +19,7 @@ object ReadFile {
     // val data =sc.textFile("/home/hadoop/test.txt")
     // data.collect().foreach(println)
     // /user/horizon/data
-    //data.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/horizon1")
+    //data.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/ads_store")
 
     // Create the context with a 1 second batch size
     val ssc = new StreamingContext("local[*]", "LogAnalysis", Seconds(15))
@@ -30,7 +30,7 @@ object ReadFile {
     // hostname:port for Kafka brokers, not Zookeeper
     val kafkaParams = Map("metadata.broker.list" -> "localhost:9092")
     // List of topics you want to listen for from Kafka
-    val topics = List("svc-horizon").toSet
+    val topics = List("svc-ads").toSet
     // Create our Kafka stream, which will contain (topic,message) pairs. We tack a 
     // map(_._2) at the end in order to only get the messages, which contain individual
     // lines of data.
@@ -39,7 +39,7 @@ object ReadFile {
 
     lines.print();
     lines.foreachRDD(record => {
-      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/horizon1")
+      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/ads")
     })
 
     ssc.checkpoint("/home/hadoop/checkpoint")
