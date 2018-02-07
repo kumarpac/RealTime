@@ -26,7 +26,7 @@ object test {
     val kafkaSource = sparkSession.
       readStream.
       format("kafka"). // <-- use KafkaSource
-      option("subscribe", "horizon_mysql_reader_topic").
+      option("subscribe", "hor_mysql_reader_topic").
       option("kafka.bootstrap.servers", "localhost:9092").
       option("startingoffsets", "earliest").
       load()
@@ -35,11 +35,11 @@ object test {
     //option("kafka.key.deserializer","classOf[StringDeserializer]").
 
     kafkaSource.printSchema()
-    //kafkaSource.write.parquet("hdfs://oc1175581158.ibm.com:9000/user/horizon2")
+    //kafkaSource.write.parquet("hdfs://oc1175581158.ibm.com:9000/user/ads")
 
     val sink = kafkaSource.writeStream.
       format("parquet").
-      option("path", "hdfs://oc1175581158.ibm.com:9000/user/horizon3").
+      option("path", "hdfs://oc1175581158.ibm.com:9000/user/ads").
       option("checkpointLocation", "/home/hadoop").
       start()
 
