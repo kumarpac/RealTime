@@ -15,7 +15,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 public class KafkaFileReaderProducer extends Thread {
 
 	private static  String topicName= ConstantFile.topicName;
-   // = "svc-horizon";
+   // = "svc-ads";
 	//public static final String fileName = "/home/hadoop/test.txt";
 	public static final String fileName = ConstantFile.fileName;
 
