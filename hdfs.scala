@@ -37,7 +37,7 @@ object hdfs {
     stream.print()
 
     stream.foreachRDD(record => {
-      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/horizon4")
+      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/ads_store")
     })
 
     val key = stream.map(record => (record.key))
@@ -46,7 +46,7 @@ object hdfs {
     (value).print()
 
     value.foreachRDD(record => {
-      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/horizon5")
+      record.saveAsTextFile("hdfs://oc1175581158.ibm.com:9000/user/ads_lake")
     })
 
     ssc.checkpoint("/home/hadoop/checkpoint")
