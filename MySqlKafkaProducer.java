@@ -34,7 +34,7 @@ public class Test3 {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager
 					.getConnection(
-							"jdbc:mysql://localhost:3306/horizon?verifyServerCertificate=false&useSSL=true",
+							"jdbc:mysql://localhost:3306/ads?verifyServerCertificate=false&useSSL=true",
 							"root", "Usa@12345");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from Persons");
