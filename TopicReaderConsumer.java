@@ -22,7 +22,7 @@ public class TopicReaderConsumer {
 		properties.setProperty("enabled.auto.commit", "true");
 		
 		KafkaConsumer<String,String> kafkaConsumer = new KafkaConsumer<String,String>(properties);
-		kafkaConsumer.subscribe(Arrays.asList("svc-horizon"));
+		kafkaConsumer.subscribe(Arrays.asList("svc-ads"));
 		
 		while(true){
 			ConsumerRecords<String,String> consumerRecords = kafkaConsumer.poll(100);
